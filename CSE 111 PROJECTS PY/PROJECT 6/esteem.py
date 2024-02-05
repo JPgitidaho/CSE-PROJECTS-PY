@@ -1,0 +1,93 @@
+def main():
+    print('This program is an implementation of the Rosenberg')
+    print('Self-Esteem Scale. This program will show you ten')
+    print('statements that you could possibly apply to yourself.')
+    print('Please rate how much you agree with each of the')
+    print('statements by responding with one of these four letters:')
+    print()
+    print('D means you strongly disagree with the statement.')
+    print('d means you disagree with the statement.')
+    print('a means you agree with the statement.')
+    print('A means you strongly agree with the statement.')
+    print()
+
+    score = 0
+    score += ask_question(
+        '1. I feel that I am a person of worth, at least on an equal plane with others.',
+        positive=True)
+    score += ask_question(
+        '2. I feel that I have a number of good qualities.',
+        positive=True)
+    score += ask_question(
+        '3. All in all, I am inclined to feel that I am a failure.',
+        positive=False)
+    score += ask_question(
+        '4. I am able to do things as well as most other people.',
+        positive=True)
+    score += ask_question(
+        '5. I feel I do not have much to be proud of.',
+        positive=False)
+    score += ask_question(
+        '6. I take a positive attitude toward myself.',
+        positive=True)
+    score += ask_question(
+        '7. On the whole, I am satisfied with myself.',
+        positive=True)
+    score += ask_question(
+        '8. I wish I could have more respect for myself.',
+        positive=False)
+    score += ask_question(
+        '9. I certainly feel useless at times.',
+        positive=False)
+    score += ask_question(
+        '10. At times I think I am no good at all.',
+        positive=False)
+
+    print()
+    print(f'Your score is {score}.')
+    print('A score below 15 may indicate problematic low self-esteem.')
+
+
+def ask_question(statement, positive):
+    '''Display one statement to the user and get the user's response.
+    Then determine the score for the response and return the score.
+
+    Parameters:
+        statement (str): The statement to show the user.
+        positive (bool): True if the statement is positive, False if negative.
+
+    Returns:
+        int: The score from the user's response to the statement.
+    '''
+    print(statement)
+    answer = input('   Enter D, d, a, or A: ')
+    score = 0
+    if positive:
+        if answer == 'D':
+            score = 0
+        elif answer == 'd':
+            score = 1
+        elif answer == 'a':
+            score = 2
+        elif answer == 'A':
+            score = 3
+    else:
+        if answer == 'D':
+            score = 3
+        elif answer == 'd':
+            score = 2
+        elif answer == 'a':
+            score = 1
+        elif answer == 'A':
+            score = 0
+    return score
+
+
+# If this file was executed like this:
+# > python esteem.py
+# then call the main function. However, if this file
+# was simply imported, then skip the call to main.
+if __name__ == '__main__':
+    main()
+
+
